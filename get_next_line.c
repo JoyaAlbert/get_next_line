@@ -25,13 +25,13 @@ char	*get_next_line(int fd)
 		free(aux);
 		return (aux);
 	}
-	//line = next_line(aux);
-	return (NULL);
+	line = next_line(aux);
+	return (line);
 }
-/*
+
 int main()
 {
 	int fd = open("test.txt", O_RDONLY);
-	get_next_line(fd);
+	printf("%s", get_next_line(fd));
 	return 0;
-}*/
+}

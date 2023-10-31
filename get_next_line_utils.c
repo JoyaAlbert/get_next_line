@@ -35,7 +35,7 @@ char	*readfile(int fd)
 		line[i] = '\0';
 	}
 	free(aux);
-	printf("%s", line);
+	//printf("%s", line);
 	if (size < 0)
 		return (NULL);
 	return (line);
@@ -49,7 +49,7 @@ char	*next_line(char *aux)
 	i = 0;
 	while (aux[i] != '\n' || aux[i] != '\0')
 		i++;
-	line = malloc(i * sizeof(char));
+	line = malloc((i + 1) * sizeof(char));
 	if (line == NULL)
 		return (NULL);
 	i = 0;
@@ -59,6 +59,5 @@ char	*next_line(char *aux)
 		i++;
 	}
 	line[i] = '\0';
-	printf("%s", line);
 	return (line);
 }
