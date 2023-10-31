@@ -6,7 +6,7 @@
 /*   By: joya <joya@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 19:53:19 by joya              #+#    #+#             */
-/*   Updated: 2023/10/30 20:42:38 by joya             ###   ########.fr       */
+/*   Updated: 2023/10/31 21:59:34 by joya             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*readfile(int fd)
 		line[i] = '\0';
 	}
 	free(aux);
-	//printf("%s", line);
+	printf("%s", line);
 	if (size < 0)
 		return (NULL);
 	return (line);

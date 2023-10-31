@@ -6,7 +6,7 @@
 /*   By: joya <joya@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:14:56 by ajoya-pi          #+#    #+#             */
-/*   Updated: 2023/10/30 20:37:45 by joya             ###   ########.fr       */
+/*   Updated: 2023/10/31 21:59:50 by joya             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ char	*get_next_line(int fd)
 		free(aux);
 		return (aux);
 	}
-	line = next_line(aux);
-	return (line);
+	//line = next_line(aux);
+	return (NULL);
 }
 
 int main()
