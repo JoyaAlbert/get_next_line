@@ -6,7 +6,7 @@
 /*   By: ajoya-pi <ajoya-pi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 19:53:19 by joya              #+#    #+#             */
-/*   Updated: 2023/11/01 16:23:14 by ajoya-pi         ###   ########.fr       */
+/*   Updated: 2023/11/03 14:27:25 by ajoya-pi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,16 @@ char	*fill_line(int size, char *aux)
 		i++;
 	}
 	line[i] = '\0';
-	printf("\n%s", aux);
 	return (line);
 }
+/**
 char	*readfile(int fd)
 {
 	char		*aux;
 	static char	*line;
 	int			size;
 	int			a;
+	char		*puta;
 
 	size = 0;
 	aux = malloc(1024);
@@ -55,12 +56,83 @@ char	*readfile(int fd)
 		a = read (fd, aux, BUFFER_SIZE);
 		if (a == -1)
 			return (NULL);
-		printf("%s", aux);
 		size = a + size;
 	}
+	puta[size] = '\0';
+	printf("%s", puta);
+
 	line = fill_line(size + 1, aux);
 	free(aux);
 	return (line);
+}*/
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+{
+	unsigned int	i;
+
+	i = 0;
+	if (size == 0)
+		return (ft_strlen(src));
+	while (src[i] != '\0' && i < (size))
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (ft_strlen(src));
+}
+
+unsigned int	ft_strladd(char *dest, char *src, unsigned int size)
+{
+	unsigned int	i;
+	unsigned int	j;
+
+	i = 0;
+	j = 0;
+	while (dest[i] != '\0')
+		i++;
+	while (j <= size)
+	{
+		dest[i] = src[j];
+		i++;
+		j++;
+	}
+	dest[i - 1] = '\0';
+	return (ft_strlen(src));
+}
+
+char	*readfile(int fd)
+{
+	char	*aux;
+	char	*temp;
+	char	*lines;
+	int	size;
+	int	a;
+
+	a = 0;
+	size = 0;
+	aux = malloc(1024);
+	temp = malloc(1024);
+	while (1)
+	{
+		a = read(fd, aux, BUFFER_SIZE);
+		if (a == -1)
+			return (NULL);
+		if (size == 0)
+			ft_strlcpy(temp, aux, a);
+		else
+			ft_strladd(temp, aux, a);
+		if (aux[a - 1] == '\0')
+		{
+			size = a + size;
+			lines = fill_line(size + 1, temp);
+			free(aux);
+			free(temp);
+			return (lines);
+		}
+		aux[ft_strlen(aux)] = '\0';
+		size = a + size;
+	}
+	//return (lines);
 }
 
 
@@ -83,18 +155,6 @@ char	*next_line(char *aux)
 	}
 	line[i] = '\0';
 	return (line);
-}
-void	*ft_memset(void *b, int c, size_t len)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < len)
-	{
-		((unsigned char *)b)[i] = (unsigned char)c;
-		i++;
-	}
-	return (b);
 }
 
 char	*delete(char *aux)
