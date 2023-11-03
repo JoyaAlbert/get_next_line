@@ -6,7 +6,7 @@
 /*   By: ajoya-pi <ajoya-pi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:14:56 by ajoya-pi          #+#    #+#             */
-/*   Updated: 2023/11/03 15:16:14 by ajoya-pi         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:27:04 by ajoya-pi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ char	*get_next_line(int fd)
 	if (nlines == NULL)
 		nlines = aux;
 	line = next_line(nlines);
-	nlines = delete(nlines);
+	nlines = delete_first(nlines);
 	return (line);
 }
-
+/**
 int main()
 {
 	int fd = open("test.txt", O_RDONLY);
 	for(int i = 0; i < 1; i++)
 		printf("%s", get_next_line(fd));
 	return 0;
-}
+}*/

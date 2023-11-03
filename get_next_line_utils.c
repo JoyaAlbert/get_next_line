@@ -6,7 +6,7 @@
 /*   By: ajoya-pi <ajoya-pi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 19:53:19 by joya              #+#    #+#             */
-/*   Updated: 2023/11/03 15:21:26 by ajoya-pi         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:26:59 by ajoya-pi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ char	*next_line(char *aux)
 	return (line);
 }
 
-char	*delete(char *aux)
+char	*delete_first(char *aux)
 {
 	int		i;
 	int		j;
