@@ -6,7 +6,7 @@
 /*   By: ajoya-pi <ajoya-pi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:13:51 by ajoya-pi          #+#    #+#             */
-/*   Updated: 2023/11/03 15:26:47 by ajoya-pi         ###   ########.fr       */
+/*   Updated: 2023/11/03 16:34:02 by ajoya-pi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@
 # include <stdio.h>
 # include <unistd.h>
 
-char	*get_next_line(int fd);
+char			*get_next_line(int fd);
 //UTILS
-char	*readfile(int fd, int size, char *aux);
-char	*text(int fd);
-char	*next_line(char *aux);
-char	*delete_first(char *aux);
+unsigned int	ft_strladd(char *dest, char *src, unsigned int size);
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
+char			*fill_line(int size, char *aux);
+size_t			ft_strlen(const char *str);
 #endif
