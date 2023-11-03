@@ -6,11 +6,12 @@
 /*   By: ajoya-pi <ajoya-pi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 19:53:19 by joya              #+#    #+#             */
-/*   Updated: 2023/11/03 14:27:25 by ajoya-pi         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:21:26 by ajoya-pi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
 size_t	ft_strlen(const char *str)
 {
 	size_t	i;
@@ -20,14 +21,15 @@ size_t	ft_strlen(const char *str)
 		i++;
 	return (i);
 }
+
 char	*fill_line(int size, char *aux)
 {
 	static char	*line;
-	int	i;
+	int			i;
 
 	i = 0;
 	line = malloc(sizeof(char) * size);
-	if(line == NULL)
+	if (line == NULL)
 		return (NULL);
 	while (i < size)
 	{
@@ -37,34 +39,7 @@ char	*fill_line(int size, char *aux)
 	line[i] = '\0';
 	return (line);
 }
-/**
-char	*readfile(int fd)
-{
-	char		*aux;
-	static char	*line;
-	int			size;
-	int			a;
-	char		*puta;
 
-	size = 0;
-	aux = malloc(1024);
-	if (aux == NULL)
-		return (NULL);
-	a = 1;
-	while (aux[a - 1] != '\0' || a == 1)
-	{
-		a = read (fd, aux, BUFFER_SIZE);
-		if (a == -1)
-			return (NULL);
-		size = a + size;
-	}
-	puta[size] = '\0';
-	printf("%s", puta);
-
-	line = fill_line(size + 1, aux);
-	free(aux);
-	return (line);
-}*/
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
 	unsigned int	i;
@@ -100,20 +75,14 @@ unsigned int	ft_strladd(char *dest, char *src, unsigned int size)
 	return (ft_strlen(src));
 }
 
-char	*readfile(int fd)
+char	*readfile(int fd, int size, char *aux)
 {
-	char	*aux;
-	char	*temp;
+	char	temp[1024];
 	char	*lines;
-	int	size;
-	int	a;
+	int		a;
 
-	a = 0;
-	size = 0;
-	aux = malloc(1024);
-	temp = malloc(1024);
 	while (1)
-	{
+	{	
 		a = read(fd, aux, BUFFER_SIZE);
 		if (a == -1)
 			return (NULL);
@@ -126,15 +95,24 @@ char	*readfile(int fd)
 			size = a + size;
 			lines = fill_line(size + 1, temp);
 			free(aux);
-			free(temp);
 			return (lines);
 		}
 		aux[ft_strlen(aux)] = '\0';
 		size = a + size;
 	}
-	//return (lines);
 }
 
+char	*text(int fd)
+{
+	char	*aux;
+	char	*lines;
+	int		size;
+
+	size = 0;
+	aux = malloc(1024);
+	lines = readfile(fd, size, aux);
+	return (lines);
+}
 
 char	*next_line(char *aux)
 {
@@ -174,7 +152,5 @@ char	*delete(char *aux)
 		j++;
 	}
 	nlines[j] = '\0';
-	//ft_memset(nlines + j, '\0', i);
 	return (nlines);
 }
-

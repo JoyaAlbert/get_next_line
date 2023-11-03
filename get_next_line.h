@@ -6,7 +6,7 @@
 /*   By: ajoya-pi <ajoya-pi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:13:51 by ajoya-pi          #+#    #+#             */
-/*   Updated: 2023/11/03 14:29:55 by ajoya-pi         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:09:20 by ajoya-pi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@
 
 char	*get_next_line(int fd);
 //UTILS
-char	*readfile(int fd);
+char	*readfile(int fd, int size, char *aux);
+char	*text(int fd);
 char	*next_line(char *aux);
 char	*delete(char *aux);
 #endif

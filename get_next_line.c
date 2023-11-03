@@ -6,7 +6,7 @@
 /*   By: ajoya-pi <ajoya-pi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:14:56 by ajoya-pi          #+#    #+#             */
-/*   Updated: 2023/11/03 14:30:15 by ajoya-pi         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:16:14 by ajoya-pi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 char	*get_next_line(int fd)
 {
-	static char *nlines;
+	static char	*nlines;
 	char		*line;
 	char		*aux;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	aux = readfile(fd);
+	aux = text(fd);
 	if (aux == NULL)
 	{
 		free(aux);
